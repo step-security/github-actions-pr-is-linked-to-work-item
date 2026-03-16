@@ -1,0 +1,14 @@
+name: 'Azure Boards, check for AB#'
+description: 'Check if the pull request is linked to a work item in Azure DevOps'
+author: 'step-security'
+branding:
+  icon: "code"
+  color: "purple"
+inputs:
+  repo-token:
+    description: 'Github token of the repository (automatically created by GitHub)'
+    default: ${{ github.token }}
+    required: false
+runs:
+  using: 'node24'
+  main: 'dist/index.js'
