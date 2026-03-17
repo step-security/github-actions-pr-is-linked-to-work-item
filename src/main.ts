@@ -1,6 +1,5 @@
 import * as core from '@actions/core'
 import * as github from '@actions/github'
-import {Context} from '@actions/github/lib/context'
 import { GitHub } from '@actions/github/lib/utils'
 import axios, {isAxiosError} from 'axios'
 
@@ -40,7 +39,7 @@ async function validateSubscription(): Promise<void> {
 async function run(): Promise<void> {
   try {
     await validateSubscription();
-    const context: Context = github.context
+    const context = github.context
     const github_token: string = core.getInput('repo-token')    
     const pull_request_number: number = context.payload.pull_request?.number ?? 0    
     const pull_request_description: string = context.payload.pull_request?.body ?? ''    
